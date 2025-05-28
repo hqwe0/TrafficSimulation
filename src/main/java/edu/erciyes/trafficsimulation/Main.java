@@ -22,6 +22,7 @@ public class Main extends Application{
     }
 
     public static void main(String[] args) {
+
         launch();
 
 //        TrafficLight northLight = new TrafficLight(3,"NORTH");

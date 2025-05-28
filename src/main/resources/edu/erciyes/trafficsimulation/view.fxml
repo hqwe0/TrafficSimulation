@@ -62,7 +62,7 @@
         </Group>
 
         <!--Trafik lambaları-->
-      <Group fx:id="northLight" layoutX="150.0" layoutY="145.0" rotate="-90.0">
+      <Group fx:id="northLight" layoutX="150.0" layoutY="145.0" rotate="90.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
             <Circle fx:id="northRed" fill="RED" layoutX="55.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
@@ -81,14 +81,14 @@
         <Group fx:id="southLight" layoutX="280.0" layoutY="320.0" rotate="-90.0">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" stroke="BLACK" strokeType="INSIDE" width="70.0" />
-                <Circle id="southRed" fx:id="southRed" fill="RED" layoutX="55.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle id="southYellow" fx:id="southYellow" fill="YELLOW" layoutX="33.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
-                <Circle id="southGreen" fill="LIME" layoutX="12.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="southRed" fill="RED" layoutX="55.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="southYellow" fill="YELLOW" layoutX="33.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
+                <Circle fx:id="southGreen" fill="LIME" layoutX="12.0" layoutY="15.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
             </children>
         </Group>
-      <Group fx:id="westLight" layoutX="126.0" layoutY="263.0">
+      <Group fx:id="westLight" layoutX="126.0" layoutY="263.0" rotate="180.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutY="36.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="30.0" layoutY="36.0" rotate="180.0" stroke="BLACK" strokeType="INSIDE" width="72.0" />
             <Circle fx:id="westRed" fill="RED" layoutX="14.0" layoutY="51.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="westYellow" fill="YELLOW" layoutX="36.0" layoutY="51.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle fx:id="westGreen" fill="LIME" layoutX="58.0" layoutY="51.0" opacity="0.5" radius="8.0" stroke="BLACK" strokeType="INSIDE" />
@@ -116,10 +116,26 @@
                 <Font name="System Bold" size="13.0" />
             </font>
         </Text>
+      <Label fx:id="northTimer" layoutX="171.0" layoutY="95.0" opacity="1.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="eastTimer" layoutX="373.0" layoutY="171.0" opacity="1.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="westTimer" layoutX="90.0" layoutY="303.0" opacity="1.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+      <Label fx:id="southTimer" layoutX="299.0" layoutY="379.0" opacity="1.0">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
     </Pane>
 
           <!-- Araç Girişi -->
-    <VBox layoutX="133.0" layoutY="106.0" prefHeight="226.0" prefWidth="201.0" spacing="10">
+    <VBox layoutX="169.0" layoutY="148.0" prefHeight="226.0" prefWidth="201.0" spacing="10">
         <Label style="-fx-font-weight: bold; -fx-font-size: 16" text="Araç Yoğunluğu Girişi" />
         <HBox spacing="10">
             <Label text="North:" />
@@ -151,34 +167,16 @@
 
     <!-- Kontrol Düğmeleri -->
     <HBox layoutX="586.0" layoutY="599.0" spacing="15">
-        <Button fx:id="btnStart" prefWidth="100" text="Başlat" />
-        <Button fx:id="btnPause" prefWidth="100" text="Durdur" />
-        <Button fx:id="btnReset" prefWidth="100" text="Sıfırla" />
+        <Button fx:id="btnStart" onAction="#startTimer" prefWidth="100" text="Başlat" />
+        <Button fx:id="btnPause" onAction="#stopTimer" prefWidth="100" text="Durdur" />
+        <Button fx:id="btnReset" onAction="#resetTimer" prefWidth="100" text="Sıfırla" />
     </HBox>
-
-    <!-- Zamanlayıcı Etiketleri -->
-    <VBox layoutX="132.0" layoutY="357.0" spacing="15">
-        <Label style="-fx-font-weight: bold; -fx-font-size: 16" text="Hesaplanan Süreler:" />
-        <Label fx:id="calcNorthLabel" text="North: 0s" />
-        <Label fx:id="calcSouthLabel" text="South: 0s" />
-        <Label fx:id="calcEastLabel" text="East: 0s" />
-        <Label fx:id="calcWestLabel" text="West: 0s" />
-    </VBox>
-    <VBox layoutX="335.0" layoutY="357.0" spacing="15">
+    <VBox layoutX="170.0" layoutY="422.0" spacing="15">
         <children>
-            <Label style="-fx-font-weight: bold; -fx-font-size: 16" text="Kalan Süreler:" />
-            <Label fx:id="remainNorthLabel" text="North: 0s" />
-            <Label fx:id="remainSouthLabel" text="South: 0s" />
-            <Label fx:id="remainEastLabel" text="East: 0s" />
-            <Label fx:id="remainWestLabel" text="West: 0s" />
-        </children>
-    </VBox>
-    <VBox layoutX="314.0" layoutY="106.0" spacing="15">
-        <children>
-            <Label style="-fx-font-weight: bold; -fx-font-size: 16" text="Yollardaki Araç Sayıları:" />
+            <Label style="-fx-font-weight: bold; -fx-font-size: 16" text="Atanan yoğunlukları" />
             <Label fx:id="northVehicleCountLabel" text="North: 0" />
-            <Label fx:id="southVehicleCountLabel" text="South: 0" />
             <Label fx:id="eastVehicleCountLabel" text="East: 0" />
+            <Label fx:id="southVehicleCountLabel" text="South: 0" />
             <Label fx:id="westVehicleCountLabel" text="West: 0" />
         </children>
     </VBox>
