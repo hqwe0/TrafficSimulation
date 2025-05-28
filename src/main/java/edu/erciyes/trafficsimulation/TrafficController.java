@@ -120,6 +120,11 @@ public class TrafficController {
         });
         timeline.getKeyFrames().addAll(oneSecondTick);
         timeline.play();
+        northVehicleCountLabel.setText("North : " + northCarNumber + "--> (Yeşil: " + northLight.getGreenTime() + " s)");
+        eastVehicleCountLabel.setText("East : " + eastCarNumber + " --> (Yeşil: " + eastLight.getGreenTime() + " s)");
+        southVehicleCountLabel.setText("South: " + southCarNumber + "--> (Yeşil: " + southLight.getGreenTime() + " s)");
+        westVehicleCountLabel.setText("West: " + westCarNumber + " --> (Yeşil: " + westLight.getGreenTime() + " s)");
+
 
     }
 
