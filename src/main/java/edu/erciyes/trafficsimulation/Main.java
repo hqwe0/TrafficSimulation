@@ -22,36 +22,7 @@ public class Main extends Application{
     }
 
     public static void main(String[] args) {
-
         launch();
-
-//        TrafficLight northLight = new TrafficLight(3,"NORTH");
-//        TrafficLight eastLight = new TrafficLight(3,"EAST");
-//        TrafficLight southLight = new TrafficLight(3,"SOUTH");
-//        TrafficLight westLight = new TrafficLight(3,"WEST");
-
-
-//        while (true){
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.print("North car: ");
-//            int northCarsNumber = scanner.nextInt();
-//            System.out.print("East car: ");
-//            int eastCarsNumber = scanner.nextInt();
-//            System.out.print("South car: ");
-//            int southCarsNumber = scanner.nextInt();
-//            System.out.print("West car: ");
-//            int westCarsNumber = scanner.nextInt();
-//
-//            TrafficCalculator.calculateTraffic(northLight,northCarsNumber,eastLight,eastCarsNumber,
-//                    southLight,southCarsNumber,westLight,westCarsNumber);
-//
-//            Queue<Vehicle> northCars = Vehicle.VehicleCreator("NORTH",northCarsNumber);
-//            Queue<Vehicle> eastCars = Vehicle.VehicleCreator("EAST",eastCarsNumber);
-//            Queue<Vehicle> southCars = Vehicle.VehicleCreator("SOUTH",southCarsNumber);
-//            Queue<Vehicle> westCars = Vehicle.VehicleCreator("WEST",westCarsNumber);
-//        }
-
-
     }
 
 

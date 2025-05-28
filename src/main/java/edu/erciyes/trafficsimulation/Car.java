@@ -1,7 +1,11 @@
 package edu.erciyes.trafficsimulation;
 
-public class Car extends Vehicle{
-    public Car(String direction, double velocity, double accelaration) {
-        super(direction, velocity, accelaration);
+import javafx.scene.shape.Rectangle;
+
+public class Car {
+    private Rectangle shape = new Rectangle(30,20);
+
+    public Rectangle getShape() {
+        return shape;
     }
 }

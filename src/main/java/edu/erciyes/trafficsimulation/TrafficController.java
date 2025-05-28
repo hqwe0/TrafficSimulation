@@ -7,8 +7,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.util.Duration;
 
 import java.util.Random;
@@ -19,6 +21,8 @@ public class TrafficController {
     @FXML private Label northTimer, eastTimer,southTimer,westTimer;
     @FXML private Circle northRed, northYellow, northGreen, eastRed, eastYellow, eastGreen, southRed, southYellow, southGreen, westRed, westYellow, westGreen;
     @FXML private Button btnPause;
+    @FXML private Line northLine,eastLine,southLine,westLine;
+    @FXML private Pane intersectionPane;
 
     private Timeline timeline;
     private boolean timelineInitial = false;
@@ -120,6 +124,7 @@ public class TrafficController {
         });
         timeline.getKeyFrames().addAll(oneSecondTick);
         timeline.play();
+
 
     }
 
@@ -261,4 +266,3 @@ public class TrafficController {
         timeline.playFromStart();
     }
 }
-
